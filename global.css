@@ -1,0 +1,163 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css";
+@import "nativewind/theme";
+
+/*
+ * REPAGE Material 3 color roles.
+ *
+ * Single source of truth: Docs/material-theme.json (Material Theme Builder
+ * export, seed #1F7A4D). Role names follow Material 3 (kebab-case CSS
+ * variables), every role exists in a light and a dark value, and screens
+ * never hardcode a color — they use the generated utilities
+ * (bg-primary, text-on-surface, border-outline-variant, ...).
+ *
+ * Layout of this file:
+ * - `@theme` registers the roles so Tailwind generates the utilities.
+ * - `:root` provides the runtime default (light) values.
+ * - The `prefers-color-scheme: dark` media query swaps every role to its
+ *   dark value. The variables are excluded from native inlining in
+ *   metro.config.js so the swap also works on native platforms.
+ * - Fixed roles keep the same color in light and dark, per Material 3.
+ */
+
+@theme {
+  /* Accent and error roles */
+  --color-primary: var(--m3-primary, #2a6a47);
+  --color-on-primary: var(--m3-on-primary, #ffffff);
+  --color-primary-container: var(--m3-primary-container, #aff2c5);
+  --color-on-primary-container: var(--m3-on-primary-container, #0b5131);
+  --color-secondary: var(--m3-secondary, #4e6354);
+  --color-on-secondary: var(--m3-on-secondary, #ffffff);
+  --color-secondary-container: var(--m3-secondary-container, #d1e8d5);
+  --color-on-secondary-container: var(--m3-on-secondary-container, #374b3d);
+  --color-tertiary: var(--m3-tertiary, #3b6470);
+  --color-on-tertiary: var(--m3-on-tertiary, #ffffff);
+  --color-tertiary-container: var(--m3-tertiary-container, #bfe9f8);
+  --color-on-tertiary-container: var(--m3-on-tertiary-container, #224c58);
+  --color-error: var(--m3-error, #ba1a1a);
+  --color-on-error: var(--m3-on-error, #ffffff);
+  --color-error-container: var(--m3-error-container, #ffdad6);
+  --color-on-error-container: var(--m3-on-error-container, #93000a);
+
+  /* Background and surface roles */
+  --color-background: var(--m3-background, #f6fbf4);
+  --color-on-background: var(--m3-on-background, #181d19);
+  --color-surface: var(--m3-surface, #f6fbf4);
+  --color-on-surface: var(--m3-on-surface, #181d19);
+  --color-surface-variant: var(--m3-surface-variant, #dce5db);
+  --color-on-surface-variant: var(--m3-on-surface-variant, #414942);
+  --color-surface-dim: var(--m3-surface-dim, #d6dbd5);
+  --color-surface-bright: var(--m3-surface-bright, #f6fbf4);
+  --color-surface-container-lowest: var(--m3-surface-container-lowest, #ffffff);
+  --color-surface-container-low: var(--m3-surface-container-low, #f0f5ee);
+  --color-surface-container: var(--m3-surface-container, #eaefe8);
+  --color-surface-container-high: var(--m3-surface-container-high, #e5eae3);
+  --color-surface-container-highest: var(--m3-surface-container-highest, #dfe4dd);
+
+  /* Outline, inverse and utility roles */
+  --color-outline: var(--m3-outline, #717972);
+  --color-outline-variant: var(--m3-outline-variant, #c0c9c0);
+  --color-inverse-surface: var(--m3-inverse-surface, #2c322d);
+  --color-inverse-on-surface: var(--m3-inverse-on-surface, #edf2eb);
+  --color-inverse-primary: var(--m3-inverse-primary, #93d5aa);
+  --color-surface-tint: var(--m3-surface-tint, #2a6a47);
+  --color-scrim: var(--m3-scrim, #000000);
+  --color-shadow: var(--m3-shadow, #000000);
+
+  /* Fixed roles — same color in light and dark */
+  --color-primary-fixed: #aff2c5;
+  --color-on-primary-fixed: #002110;
+  --color-primary-fixed-dim: #93d5aa;
+  --color-on-primary-fixed-variant: #0b5131;
+  --color-secondary-fixed: #d1e8d5;
+  --color-on-secondary-fixed: #0c1f14;
+  --color-secondary-fixed-dim: #b5ccba;
+  --color-on-secondary-fixed-variant: #374b3d;
+  --color-tertiary-fixed: #bfe9f8;
+  --color-on-tertiary-fixed: #001f27;
+  --color-tertiary-fixed-dim: #a3cddb;
+  --color-on-tertiary-fixed-variant: #224c58;
+}
+
+/* Light scheme (default) — Docs/material-theme.json `schemes.light` */
+:root {
+  --m3-primary: #2a6a47;
+  --m3-on-primary: #ffffff;
+  --m3-primary-container: #aff2c5;
+  --m3-on-primary-container: #0b5131;
+  --m3-secondary: #4e6354;
+  --m3-on-secondary: #ffffff;
+  --m3-secondary-container: #d1e8d5;
+  --m3-on-secondary-container: #374b3d;
+  --m3-tertiary: #3b6470;
+  --m3-on-tertiary: #ffffff;
+  --m3-tertiary-container: #bfe9f8;
+  --m3-on-tertiary-container: #224c58;
+  --m3-error: #ba1a1a;
+  --m3-on-error: #ffffff;
+  --m3-error-container: #ffdad6;
+  --m3-on-error-container: #93000a;
+  --m3-background: #f6fbf4;
+  --m3-on-background: #181d19;
+  --m3-surface: #f6fbf4;
+  --m3-on-surface: #181d19;
+  --m3-surface-variant: #dce5db;
+  --m3-on-surface-variant: #414942;
+  --m3-surface-dim: #d6dbd5;
+  --m3-surface-bright: #f6fbf4;
+  --m3-surface-container-lowest: #ffffff;
+  --m3-surface-container-low: #f0f5ee;
+  --m3-surface-container: #eaefe8;
+  --m3-surface-container-high: #e5eae3;
+  --m3-surface-container-highest: #dfe4dd;
+  --m3-outline: #717972;
+  --m3-outline-variant: #c0c9c0;
+  --m3-inverse-surface: #2c322d;
+  --m3-inverse-on-surface: #edf2eb;
+  --m3-inverse-primary: #93d5aa;
+  --m3-surface-tint: #2a6a47;
+  --m3-scrim: #000000;
+  --m3-shadow: #000000;
+}
+
+/* Dark scheme — Docs/material-theme.json `schemes.dark` */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --m3-primary: #93d5aa;
+    --m3-on-primary: #00391f;
+    --m3-primary-container: #0b5131;
+    --m3-on-primary-container: #aff2c5;
+    --m3-secondary: #b5ccba;
+    --m3-on-secondary: #213528;
+    --m3-secondary-container: #374b3d;
+    --m3-on-secondary-container: #d1e8d5;
+    --m3-tertiary: #a3cddb;
+    --m3-on-tertiary: #033541;
+    --m3-tertiary-container: #224c58;
+    --m3-on-tertiary-container: #bfe9f8;
+    --m3-error: #ffb4ab;
+    --m3-on-error: #690005;
+    --m3-error-container: #93000a;
+    --m3-on-error-container: #ffdad6;
+    --m3-background: #0f1511;
+    --m3-on-background: #dfe4dd;
+    --m3-surface: #0f1511;
+    --m3-on-surface: #dfe4dd;
+    --m3-surface-variant: #414942;
+    --m3-on-surface-variant: #c0c9c0;
+    --m3-surface-dim: #0f1511;
+    --m3-surface-bright: #353b36;
+    --m3-surface-container-lowest: #0a0f0c;
+    --m3-surface-container-low: #181d19;
+    --m3-surface-container: #1c211d;
+    --m3-surface-container-high: #262b27;
+    --m3-surface-container-highest: #313631;
+    --m3-outline: #8a938b;
+    --m3-outline-variant: #414942;
+    --m3-inverse-surface: #dfe4dd;
+    --m3-inverse-on-surface: #2c322d;
+    --m3-inverse-primary: #2a6a47;
+    --m3-surface-tint: #93d5aa;
+  }
+}
